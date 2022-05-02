@@ -1,0 +1,31 @@
+{% extends "base/layout.html" %}
+
+{% block title %}K MOVER | PHOTO GALLERY{% endblock %}
+
+{% block body %}
+    <div class="container mt-3 pt-4 pb-4" style="max-width: 1000px;">
+        <div class="gallery-head mb-3">
+            <h1 class="fs-1 text-center lead">Our Gallery</h1>
+        </div>
+
+        <div class="gallery-album">
+            <div class="row">
+                <div class="col-md-12 col-lg-4 p-3">
+                    <img class="w-100 mb-4 shadow rounded" src="/static/gallery/move-one.jpg" alt="Move One">
+                    <img class="w-100 mb-4 shadow rounded" src="/static/gallery/move-two.jpg" alt="Move One">
+                </div>
+                <div class="col-md-12 col-lg-4 p-3">
+                    <img class="w-100 mb-4 shadow rounded" src="/static/gallery/move-two.jpg" alt="Move two">
+                    <img class="w-100 mb-4 shadow rounded" src="/static/gallery/move-one.jpg" alt="Move two">
+                    
+                </div>
+                <div class="col-md-12 col-lg-4 p-3">
+                    <img class="w-100 mb-4 shadow rounded" src="/static/gallery/move-one.jpg" alt="Move One">
+                    <img class="w-100 mb-4 shadow rounded" src="/static/gallery/move-two.jpg" alt="Move One">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

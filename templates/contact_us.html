@@ -1,0 +1,53 @@
+{% extends "base/layout.html" %}
+
+{% block title %}K MOVER | CONTACT US{% endblock %}
+
+{% block body %}
+    <div class="container mt-3 pt-4 pb-4" style="max-width: 1000px;">
+        <div class="p-3-border">
+            <div class="row">
+                <div class="col-md-6 p-c" style="border-right: 1px #d3d3d3bb solid;">
+                    <h3>Contact Us</h3>
+                    <div class="mt-4 mb-4">
+                        <h4 class="fs-5">Email:</h4>
+                        <span>kmover.contact@kmover.com</span>
+                    </div>
+                    <div class="mt2 mb-4">
+                        <h4 class="fs-5">Phone:</h4>
+                        <span>+6581234567</span>
+                    </div>
+                    <div class="mt2 mb-4">
+                        <h4 class="fs-5">Our Location:</h4>
+                        <span>No.4, Siglap Hill, Bedok North Areas along Bedok North Road</span>
+                    </div>
+                    <div class="mt2 mb-4">
+                        <h4 class="fs-5">Our Facebook Page:</h4>
+                        <span>https//www.facebook.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 p-c pb-3">
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="text-lead fw-bold mb-3">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="text-lead fw-bold mb-3">Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="Enter Email">
+                        </div>
+                        <div class="mb-4">
+                            <label for="msg" class="text-lead fw-bold mb-3">Msg</label>
+                            <textarea id="msg" class="form-control" style="min-height: 100px; max-height: 230px;"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <div class="float-end">
+                                <a class="btn btn-success">Contact</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

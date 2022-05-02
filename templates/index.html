@@ -1,0 +1,191 @@
+{% extends "base/layout.html" %}
+{% block title %}K Mover | Home{% endblock %}
+
+{% block body %}
+    <style>
+        @media(min-width: 1400px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+        .display-6 {
+            font-size: calc(1rem + 1.5vw) !important;
+        }
+
+        @media(max-width: 640px) {
+            .plr-3 {
+                padding: 1.2em 0.5em;
+            }
+        }
+        .form-wrapper {
+            width: 100%;
+            min-height: 300px;
+            max-height: auto;
+            background-image: url("{{ url_for('static', filename='background-home.jpg') }}");
+            background-color: rgba(166, 152, 0, 0.4); /* use rgba for fine adjustments */
+            background-blend-mode: multiply;
+        }
+    </style>
+    <section class="form-wrapper d-flex flex-direction-row align-items-center">
+        <div class="container p-4 p-md-0">
+            <form action="/quote/psri" method="get" novalidate class="row bg-white g-3 needs-validation shadow rounded p-3 pt-5 pb-5 p-md-5">
+
+                <div class="col-md-6 mt-3 mt-md-0 mt-lg-0 col-lg-5">
+                  <input class="form-control" list="datalistOptions" required name="district_from" id="from" placeholder="From district" style="padding: 0.72em;">
+                  <div class="invalid-feedback">
+                    Please provide where you move from.
+                  </div>
+                  <datalist id="datalistOptions">
+                    {% for district in districts %}
+                      <option value="{{ district['name'] }}">
+                    {% endfor %}
+                  </datalist>
+                </div>
+                <div class="col-md-6 mt-3 mt-md-0 mt-lg-0 col-lg-5">
+                  <input class="form-control" list="datalistOptions" required name="district_to" id="to" placeholder="To district" style="padding: 0.72em;">
+                  <div class="invalid-feedback">
+                    Please provide where you move to.
+                  </div>
+                  <datalist id="datalistOptions">
+                    {% for district in districts %}
+                      <option value="{{ district['name'] }}">
+                    {% endfor %}
+                  </datalist>
+                </div>
+                <div class="col-md-4 mt-3 mt-md-2 mt-lg-0 col-lg-2">
+                    <button type="submit" class="btn btn-orange btn-lg" style="padding: 0.7rem 1rem;font-size: 1rem;border-radius: 0.3rem;">Find Estimate</button
+                </div>
+            </form>
+        
+        </div>
+
+    </div>
+
+
+    </section>
+
+    <div class="container mt-5 p-4 p-md-0 shadow-sm rounded">
+        <div class="p-5">
+            <h3 class="text-center text-secondary fw-bold lh-lg mb-4">K Mover – The Most Reliable House Movers in Singapore</h3>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="service-image">
+                        <img src="{{ url_for('static', filename='house-move.jpg') }}" class="img-fluid" alt="House Moving">
+                    </div>
+
+                    <div class="service-recap">
+                        <h4 class="text-center text-secondary mt-4 mb-4">House</h4>
+                        <p class="fs-6 text-center text-md-left lead">
+                            House Movers for all type of property.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-image">
+                        <img src="{{ url_for('static', filename='office-move.jpg') }}" class="img-fluid" alt="Office Move">
+                    </div>
+
+                    <div class="service-recap">
+                        <h4 class="text-center text-secondary mt-4 mb-4">Office</h4>
+                        <p class="fs-6 text-center text-md-left lead">
+                            Office mover in nationwide for all type of business size.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-image">
+                        <img src="{{ url_for('static', filename='storage-move.jpg') }}" class="img-fluid" alt="Storage Move">
+                    </div>
+
+                    <div class="service-recap">
+                        <h4 class="text-center text-secondary mt-4 mb-4">STORAGE</h4>
+                        <p class="fs-6 text-center text-md-left lead">
+                            Affordable temporary storage rental for your belongings.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 5em;">
+
+        <h1 class="text-center fs-1 mt-5 mb-5">K MOVER but how it's work?</h1>
+
+        <div class="row">
+            <div class="col-md-6 pt-3 pb-3">
+                <img src="{{ url_for('static', filename='contact-laptop.jpg') }}" class="img-fluid" alt="Boxes">
+            </div>
+            <div class="col-md-6 order-1">
+                <h1 class="display-4 mt-4 mb-4">1. <span class="display-6">Create your request</span></h1>
+                <p class="fs-5 lh-lg lead">
+                    It's easy to request your quote to us. Describe your personal information, and contact number need to valid. We will contact back to your within two or three business day.
+                </p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            
+            <div class="col-md-6 order-2 order-md-1">
+                <h1 class="display-4 mt-4 mb-4">2. <span class="display-6">Arrange collection and delivery</span></h1>
+                <p class="fs-5 lh-lg lead">
+                    When we contact back to you, you as a customer can arrange your move date, payments and the available vehicle depend on the size of your load.
+                </p>
+            </div>
+
+            <div class="col-md-6 order-1 order-md-2 pt-3 pb-3">
+                <img src="{{ url_for('static', filename='arrange-collect.jpg') }}" class="img-fluid" alt="Boxes">
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6 pt-3 pb-3">
+                <img src="{{ url_for('static', filename='meet-and-greet.jpg') }}" class="img-fluid" alt="Boxes">
+            </div>
+            <div class="col-md-6">
+                <h1 class="display-4 mt-4 mb-4">3. <span class="display-6">Meet and greet</span></h1>
+                <p class="fs-5 lh-lg lead">
+                    Last and final step is you can come to our office with the appointment date that you chosen before one or two week for your move date for the agreement contract.
+                </p>
+            </div>
+        </div>
+
+    </div>
+        <div class="our-partners border-top border-bottom p-4" style="margin-top: 7em;">
+            <h3 class="mt-4 mb-4 lh-lg text-center">
+                Why is K Mover undoubtedly the best house moving service in Singapore?
+            </h3>
+            <p class="fs-5 lh-lg text-center text-lead">
+                There are three things that make our service great and stand out. First customer, second customer and third customer.
+            </p>
+
+        </div>
+
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+})()
+</script>
+{% endblock %}

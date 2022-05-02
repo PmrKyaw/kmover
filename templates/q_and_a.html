@@ -1,0 +1,117 @@
+{% extends "base/layout.html" %}
+{% block title %}K MOVER | FAQ{% endblock %}
+{% block styleSheet %}
+    <style>
+        .fs-15 {
+          font-size: 1.05em;
+        }
+        .accordion-item {
+            padding: 0.9em 1em;
+        }
+        .accordion-button:focus {
+            border: unset;
+            box-shadow: unset;
+        }
+        .accordion-button:not(.collapsed) {
+            color: #5A5205;
+            border-color: #5A5205;
+            background-color: #fff;
+            box-shadow: unset;  
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    
+    <section class="w-100 bg-light" style="padding: 5em 0;">
+        <div class="container" style="max-width: 800px;">
+
+            <div class="log-title">
+                <div class="text-center">
+                    <h1 class="fs-2 text-dark">FAQ</h1>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <div class="accordion accordion-flush shadow-sm" id="accordionFlushExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                          <span class="fw-bold fs-5">How many days that take to get contact back from company?</span>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                          <p class="fs-15 text-lead">
+                            It's normally take 2 or 3 business day, in some case it's might be faster or slower than that.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                          <span class="fw-bold fs-5">Do the company offer cardboard box?</span>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                          <p class="fs-15 text-lead">
+                            Yes, we do offer cardboard boxes for our customers. And, it usually send to you before one week of your move date.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseOne">
+                          <span class="fw-bold fs-5">Can I resend quote?</span>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                          <p class="fs-15 text-lead">
+                            Sure you can resend quote!
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                          <span class="fw-bold fs-5">
+                            My apartment only allow to move at certain time?
+                          </span>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                          <p class="fs-15 text-lead">
+                            We can arrange time depend on your condo rules.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingFour">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree">
+                            <span class="fw-bold fs-5">
+                              Is that possible to give the cost after the moving?
+                            </span>
+                          </button>
+                        </h2>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <p class="fs-15 text-lead">
+                              When we contact you, we will tell you about the available payment methods, and when you need to pay.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+

@@ -1,0 +1,399 @@
+{% extends "base/layout.html" %}
+
+{% block title %}K MOVER | SEND QUOTE VERIFY INFO{% endblock %}
+
+{% block styleSheet %}
+<link rel="stylesheet" href="{{ url_for("static", filename="phone/build/css/intlTelInput.css") }}">
+<link rel="stylesheet" href="{{ url_for("static", filename="phone/build/css/demo.css") }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/invalid__field.css') }}">
+<style>
+    .success {
+        width: 50px;
+        height: 50px;
+    }
+    .q-invf {
+        position: relative;
+    }
+    #form {
+        display: none;
+    }
+
+    #loader {
+        display: block;
+    }
+
+    .mx-150 {
+        max-width: 150px;
+    }
+    .ov-lay, .fn-lay{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.1);
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+    }
+    .fn-lay {
+        height: 64%;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .iti {
+        position: relative;
+        display: block;
+    }
+    
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+    <div class="quote-wrapper mt-5 pt-4 pb-4">
+        <div class="container-sm" style="max-width: 1170px;">
+            <div class="quote-head">
+                <h4 class="lead">Send a quote to Cs50x Mover</h4>
+            </div>
+
+            <div class="quote-body mt-3">
+                <div class="mt-3 mb-3" id="sh-error"></div>
+
+                <div class="row">
+
+                    <div class="col-md-6 order-2 order-md-1" id="quote-step">
+
+                        <div class="quote-personal-info">
+
+                        <div id="loader">
+                            <div class="d-flex justify-content-center align-items-center pt-3 pb-3" style="height: 274px;">
+                                <div class="spinner-border text-dark" role="status" style="width: 3rem; height: 3rem;">
+                                    <span class="sr-only"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="q-invf g-3 needs-validation rounded pb-5" id="form" uid="0" novalidate style="padding-top: 1.4rem;">
+                            
+                            
+                            <div class="ov-lay">
+                                <div id="loader">
+                                    <div class="d-flex justify-content-center align-items-center pt-3 pb-3" style="height: 274px;">
+                                        <div class="spinner-border text-dark" role="status" style="width: 3rem; height: 3rem;">
+                                            <span class="sr-only"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-none">
+                                {{form.salutation}}
+                                {{form.name}}
+                                {{form.email}}
+                                {{form.district_from}}
+                                {{form.district_to}}
+                                {{form.msg}}
+                                {{form.est_move_date}}
+                            </div>
+                            
+                            <div class="mb-4 op-4" id="ph-sc">
+                                <label class="text-lead fw-bold mb-3" for="phone">Phone Number</label>
+                                <input type="tel" class="form-control form-control-md pt-3 pb-3" 
+                                 name="ph_num" id="phone" placeholder="">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="d-block pt-3 pb-5 op-4">
+                                <input type="submit" value="Send Code" class="btn btn-md btn-orange float-end" id="step-send">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                    <div class="col-md-6 order-1 order-md-2">
+
+                        <div class="p-0 p-md-4">
+                            <div class="mb-3">
+                                <h3 class="fs-4 mb-4 mt-3 fw-bold text-secondary">
+                                    Verify yourself
+                                </h3>
+                                <p class="lh-base" style="font-size: 15.9px; color: #606060 !important;">
+                                    We will send you a verification code to your phone! 
+                                </p>
+                                <p class="lh-base" style="font-size: 15.9px; color: #606060 !important;">
+                                    Now use 
+                                    <span
+                                    class="fw-bold" 
+                                    onclick="coptyToClipboard(this)">333333</span> as a verfiy code.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script> 
+
+<script src="{{ url_for('static', filename='phone/build/js/intlTelInput.js') }}"></script>
+<script src="{{ url_for('static', filename='phone/build/js/utils.js') }}"></script>
+<script>
+
+
+    const input = document.querySelector("#phone");
+
+    const iti = window.intlTelInput(input, {
+        utilsScript: "{{ url_for('static', filename='phone/build/js/utils.js?1638200991544') }}"
+    });
+
+    function coptyToClipboard(e) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(e).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+
+
+    iti.promise.then(function() {
+        setInterval(()=> {
+            $("#loader").hide();
+            $("#form").show();
+        }, 1000)
+    });
+
+    const csrf_token = "{{ csrf_token() }}";
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrf_token);
+            }
+        }
+    });
+
+
+    jQuery.validator.addMethod("phoneNumValidation", function(value) {
+        return iti.isValidNumber();
+    }, 'Please enter a valid number');
+
+    jQuery.validator.addMethod("onlyNumber", function(value) {
+        const pattern = /^\d+$/;
+        return pattern.test(value);
+    }, 'Please enter a valid number');
+
+    const validator = $("#form").validate({
+        onkeyup: function(element) {
+            this.element(element);
+        },
+        onclick: function(element) {
+            this.element(element);
+        },
+        onfocusout: function(element) {
+            this.element(element);
+        },
+        rules: {
+            ph_num: {
+                required: true, 
+                phoneNumValidation: true,
+                onlyNumber: true
+            },
+            verify_code: {
+                required: true,
+                onlyNumber: true,
+                minlength: 6,
+                maxlength: 6,
+            }
+    
+        },
+        messages: {
+            ph_num: {
+                required: "Pls Enter your contact Number",
+            },
+            verify_code: {
+                required: "Pls Enter your verify code"
+            }
+        },
+        errorClass: 'invalid-field',
+        errorPlacement:
+        function( error, element ){
+    
+            if (element[0].parentElement.getAttribute("id") == 'ph-vfc') {
+
+                console.log('catch');
+    
+                element[0].nextElementSibling.textContent = error.text();
+                
+            }
+            else {
+                element[0].parentElement.nextElementSibling.textContent = error.text();
+            }
+    
+        },
+        success: function(error, element) {
+    
+        }
+    });
+    
+    $("#form input, #form select").on('change', function() {
+        validator.form();
+    });
+
+    $("#step-send").on('click', function(e) {
+        e.preventDefault();
+        validator.form();
+
+        let validation = $("#form").valid();
+
+        if (validation === true) {
+            $(".ov-lay").show();
+            $(".op-4").css('opacity', 0.4);
+            setTimeout(() => {
+                $(".op-4").css('opacity', 1);
+                let d = document.createElement("div");
+                d.setAttribute('id', 'ph-vfc');
+                d.classList.add("mb-4");
+                let i = document.createElement("input");
+                i.name = "verify_code";
+                i.placeholder = "Enter Verify Code";
+                i.classList.add("form-control");
+                i.classList.add("mx-150");
+                let inv_div = document.createElement("div");
+                inv_div.classList.add("invalid-feedback");
+                d.appendChild(i);
+                d.appendChild(inv_div);
+                $(d).insertAfter($("#ph-sc"));
+                let sv = $("#step-send").clone().prop('id', 'step-verify');
+                sv.val("Verify code")
+                $(sv).insertAfter($("#step-send"));
+                $("#phone")[0].setAttribute('disabled', true);
+                sv_pd();
+                $("#step-send").remove();
+                $(".ov-lay").hide();
+            }, 3000)
+        }
+    });
+
+    function convertFormToJSON(form) {
+        return $(form)
+          .serializeArray()
+          .reduce(function (json, { name, value }) {
+            if (name == "ph_num") {
+                value = iti.activeItem.childNodes[2].innerText + value;
+            }
+            json[name] = value;
+            return json;
+          }, {});
+    }
+
+    function sv_pd() 
+    {
+        $("#step-verify").on('click', function(e) {
+            e.preventDefault();
+            validator.form();
+
+            let validation = $("#form").valid();
+
+            if (validation === true) {
+                $(".ov-lay").show();
+                $(".op-4").css('opacity', 0.4);
+                $.ajax("/info/verify", {
+                    type: "POST",
+                    contentType: 'application/json;charset=UTF-8',
+                    data: JSON.stringify({
+                        "ph_num": iti.activeItem.childNodes[2].innerText + $("input[name='ph_num']").val(),
+                        'verify_code': $("input[name='verify_code']").val(),
+                    }),
+                    success: function(data, status, xhr) {
+                        $(".ov-lay").hide();
+                        $(".op-4").css('opacity', 1);
+                        let vf = data["valid"];
+
+                        if (vf === true) {
+
+                            const vf_input = document.querySelector("input[name='verify_code']");
+                            vf_input.classList.remove('border-danger');
+
+                            let d = document.createElement("div");
+                            d.classList.add("fn-lay")
+                            let img = document.createElement("img");
+                            img.src="{{ url_for('static', filename='check.svg') }}";
+                            img.classList.add("success");
+                            img.alt = "Success";
+                            let t = document.createElement("h4");
+                            t.classList.add("lead")
+                            t.classList.add("text-center")
+                            t.innerText = "All your information are correct, and you'r ready to send.";
+                            d.append(img);
+                            d.append(t);
+                            $(d).insertBefore($("#form .ov-lay"));
+
+                            let quote = $("#step-verify").clone().prop('id', 'step-quote');
+                            quote.val("Send quote");
+                            $(quote).insertAfter($("#step-verify"));
+                            $("#step-verify").remove();
+                            send();
+
+                        }
+                        else 
+                        {
+                            let error = document.createElement("span");
+                            error.textContent = "Invalid Code!";
+                            const vf_input = document.querySelector("input[name='verify_code']");
+                            vf_input.classList.add('border-danger');
+                            vf_input.nextSibling.appendChild(error);
+                        }
+                    },  
+                    error: function(jqXhr, textStatus, errorMessage) {
+                        console.log(errorMessage);
+                    }
+                })
+            }
+    
+        });
+    }
+
+    function send() {
+        $("#step-quote").on('click', function(e) {
+            e.preventDefault();
+            validator.form();
+            $.ajax("/store/quote", {
+                type: "POST",
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify(convertFormToJSON("#form")),
+                success: function(data, status, xhr) {
+                    if (data.status == true) {
+                        return window.location = "{{ url_for('.quoted', _external=True) }}" + `?name=${data.name}`;
+                    }
+                    else {
+                        $("#sh-error").html(data.msg);
+                        $("#step-quote")[0].setAttribute('disabled', true);
+
+                        setTimeout(() => {
+                            return window.location = "{{ url_for('.index', _external=True) }}";
+                        }, 4000);
+
+                    }
+                },
+                error: function(jqXhr, textStatus, errorMessage) {
+                    console.log(errorMessage);
+                }
+            })
+        });
+    }
+
+
+</script>
+{% endblock %}

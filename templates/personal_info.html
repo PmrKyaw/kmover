@@ -1,0 +1,347 @@
+{% extends "base/layout.html" %}
+{% block title %}K MOVER | SEND QUOTE PERSONAL INFO{% endblock %}
+
+{% block styleSheet %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" integrity="sha512-Fppbdpv9QhevzDE+UHmdxL4HoW8HantO+rC8oQB2hCofV+dWV2hePnP5SgiWR1Y1vbJeYONZfzQc5iII6sID2Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/invalid__field.css') }}">
+    <style>
+        .datepicker td, .datepicker th {
+            padding: 0.4em;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="quote-wrapper mt-5 pt-4 pb-4">
+        <div class="container-sm">
+            <div class="quote-head">
+                <h4 class="fs-4 lead">Send a quote to K Mover</h4>
+            </div>
+
+            <div class="quote-body mt-5">
+                <div class="row">
+
+                    <div class="col-md-6" id="quote-step">
+
+                        <div class="quote-personal-info">
+
+                        <div class="quote-current mb-3">
+                            <h3 class="fs-4 fw-light">Personal Information And Needs</h3>
+                        </div>
+                        <form id="form" method="POST" class="q-plant rounded pt-3 pb-5" uid="0" novalidate>
+
+                            {{form.csrf_token}}
+
+
+                            <div class="mb-4">
+
+                                <label class="text-lead fw-bold mb-3" for="salutation">Salutation</label>
+                                <select 
+                                class="form-select form-select-md mb-1 pt-2 pb-2 {% if form.salutation.errors %}invalid-field{% endif %}"  
+                                name="salutation" 
+                                id="salutation"
+                                >
+                                    {% for option in form.salutation %}
+                                        {% if loop.first %}
+                                            <option value="Mr."  selected>Salutation</option>
+                                        {% endif %}
+                                        {{ option }}
+                                    {% endfor %}
+                                </select>
+
+                                <div class="invalid-feedback">
+                                    {% if form.salutation.errors %} {{ form.salutation.errors[0] }} {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="text-lead fw-bold mb-3" for="name">Name</label>
+                                <input type="text"
+                                class="form-control form-control-md pt-2 pb-2 {% if form.name.errors %}invalid-field{% endif %}" 
+                                name="name" id="name" 
+                                value="Kyaw"
+                                placeholder="Enter Name."
+                                >
+
+                                <div class="invalid-feedback">
+                                    {% if form.errors.name %}
+                                        {{ form.errors.name[0] }}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="text-lead fw-bold mb-3" for="email">Email</label>
+                                <input 
+                                type="text" 
+                                class="form-control form-control-md pt-2 pb-2 {% if form.email.errors %}invalid-field{% endif %}" 
+                                name="email" id="email"
+                                value="kyaw@gmail.com"
+                                placeholder="Enter Email."
+                                >
+                                
+                                <div class="invalid-feedback">
+                                    {% if form.errors.email %}
+                                        {{ form.errors.email[0] }}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+
+                                <label class="text-lead fw-bold mb-3" for="district_from">Moving From</label>
+                                <select 
+                                class="form-control form-control-md pt-2 pb-2 {% if form.district_from.errors %}invalid-field{% endif %}" 
+                                name="district_from" 
+                                id="district_from"
+                                >
+                                    {% for district in districts %}
+                                        <option value="{{ district['id'] }}" {{ 'selected' if district['name'] == req_district_from else '' }}>
+                                            {{ district['name'] }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+
+                                <div class="invalid-feedback">
+                                    {% if form.errors.district_from %}
+                                        {{ form.errors.district_from[0] }}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="text-lead fw-bold mb-3" for="district_to">Moving To</label>
+                                <select 
+                                class="form-control form-control-md pt-2 pb-2 {% if form.district_to.errors %}invalid-field{% endif %}" 
+                                name="district_to" 
+                                id="district_to"
+                                >
+                                    {% for district in districts %}
+                                        <option value="{{ district['id'] }}" {{ 'selected' if district['name'] == req_district_to else '' }}>
+                                            {{ district['name'] }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+
+                                <div class="invalid-feedback">
+                                    {% if form.errors.district_to %}
+                                        {{ form.errors.district_to[0] }}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="est_move_date" class="text-lead fw-bold mb-3">Estimated Move Date</label>
+                                <div class="input-group date" id="datepicker">
+                                    <input type="text" 
+                                    class="form-control date-control {% if form.est_move_date.errors %}invalid-field{% endif %}" 
+                                    name="est_move_date" 
+                                    id="est_move_date"
+                                    style="background-color: #fff !important;"
+                                    />
+                                    <span class="input-group-append">
+                                        <span class="input-group-text bg-light" style="width:40px; height: 40px; border-radius: unset; border-top-right-radius: 0.3em; border-bottom-right-radius: 0.3em;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#111"><!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 32C96 14.33 110.3 0 128 0C145.7 0 160 14.33 160 32V64H288V32C288 14.33 302.3 0 320 0C337.7 0 352 14.33 352 32V64H400C426.5 64 448 85.49 448 112V160H0V112C0 85.49 21.49 64 48 64H96V32zM448 464C448 490.5 426.5 512 400 512H48C21.49 512 0 490.5 0 464V192H448V464z"/></svg>
+                                        </span>
+                                    </span>
+                                    <div class="invalid-feedback">
+                                        {% if form.errors.est_move_date %}
+                                            {{ form.errors.est_move_date[0] }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="adda_msg" class="text-lead fw-bold mb-3">Message</label>
+                                <textarea name="msg" id="adda_msg" class="form-control" style="min-height: 100px; max-height: 230px;"></textarea>
+
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="d-block pt-3 pb-5">
+                                <button class="btn btn-md btn-orange float-end" id="step-continue" type="submit">Continue</button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="p-4 mt-5">
+                            <div class="mb-3">
+                                <h3 class="fs-5 fw-bold text-secondary">
+                                    Easy
+                                </h3>
+                                <p class="lh-base text-secondary" style="font-size: 15.9px; color: #606060 !important;">
+                                    Send quote, get contact back, and decide.
+                                </p>
+                            </div>
+                            <div class="mb-3">
+                                <h3 class="fs-5 fw-bold text-secondary">
+                                    Convenient
+                                </h3>
+                                <p class="lh-base text-secondary" style="font-size: 15.9px; color: #606060 !important;">
+                                    House moving can be stressful, especially if you do by yourself from scratch. We can help you, all you need is  sit back, relax and look our work.
+                                </p>
+                            </div>
+                            <div class="mb-3">
+                                <h3 class="fs-5 fw-bold text-secondary">
+                                    Cost Effective
+                                </h3>
+                                <p class="lh-base text-secondary" style="font-size: 15.9px; color: #606060 !important;">
+                                    House moving not only can be stressful but also costly. We can offer you with affordable price.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block script %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+
+<script>
+
+
+    jQuery.validator.addMethod("notInPast", 
+        function(value, element) {
+
+            var d = new Date(),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+            
+            if (month.length < 2) 
+            {
+                month = '0' + month;
+            }
+            if (day.length < 2) 
+            {
+                day = '0' + day;
+            }
+            
+            let cp = [year, month, day].join('-');
+
+
+            return this.optional(element) || (cp < value);
+
+            
+        },'Date can\'t be in past.');
+
+    jQuery.validator.addMethod("emailExt", function(value, element, param) {
+        return value.match(/^[a-zA-Z0-9_\.%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/);
+    },'Email is invalid!');
+
+    const validator = $("#form").validate({
+        onkeyup: function(element) {
+            this.element(element);  
+
+        },
+        onclick: function(element) {
+            this.element(element);
+        },
+        onfocusout: function(element) {
+            if (element.classList.contains('date-control') & 
+            element.getAttribute('uids') === '0') {
+                element.setAttribute('uids', '1');
+
+            }
+            else {
+                this.element(element);
+            }
+
+        },
+        rules: {
+            salutation: {
+              required: true
+            },
+            name: {
+                required: true, 
+                minlength: 4,
+                maxlength: 20
+            },
+            email: {
+                required: true,
+                emailExt: true
+            },
+            est_move_date: {
+                required: true,
+                date: true,
+                notInPast: true
+
+            },
+            msg: {
+                maxlength: 200
+            }
+
+        },
+        messages: {
+            salutation: {
+                required: "Enter a Given Salutation or Gender"
+            },
+            name: {
+                required: "Enter your Name",
+                minlength: "Name need to be at least 4 character",
+                maxlength: "Name need to be less than 20 character",
+
+            },
+            email: {
+                required: "Enter email"
+            },
+            est_move_date: {
+                required: "Esitmated move date can't be empty!",
+                date: "Invalid date"
+            }
+        },
+        errorClass: 'invalid-field',
+        errorPlacement:
+        function( error, element ){
+
+            if (element.first().hasClass('date-control')) {
+
+                element[0].nextElementSibling.nextElementSibling.textContent = error.text();
+
+
+                if (element[0].getAttribute('uids') !== '0') {
+                }
+                
+            }
+            else {
+                element[0].nextElementSibling.textContent = error.text();
+            }
+
+        },
+        success: function(error, element) {
+
+        }
+    });
+
+    $("#form input, #form select").on('change', function() {
+        validator.form();
+    });
+
+
+    $("#datepicker").datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+    }).on("changeDate", function(e) {
+        // e.currentTarget.children[0].setAttribute('uids', '1');
+        validator.form();
+    }).on('hide', function(ev) { // <-----------
+        validator.form();
+    });;
+
+    $( "#datepicker" ).datepicker( "setDate", '2022-06-02');
+
+    
+
+
+  
+</script>
+{% endblock %}
