@@ -3,13 +3,13 @@ import os
 def setup():
 
     run_list = [
-        'python -m venv ./env',
-        'source ./env/bin/activate',
         'pip install -r requirements.txt ',
         'flask db init', 
         'flask db migrate',
         'flask db upgrade', 
         'flask add_districts',
+        'export FLASK_ENV=development',
+        'export FLASK_DEBUG=True',
         'flask run'
     ]
 
