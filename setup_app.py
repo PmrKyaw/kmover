@@ -14,3 +14,5 @@ def setup():
         os.system(i)
 
     return 
+
+setup()
