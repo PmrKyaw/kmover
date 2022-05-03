@@ -152,13 +152,13 @@ def info_verify():
     }), 200)
 
 @app.route('/store/quote', methods = ["POST"])
-@csrf.exempt # // user for testing 
+# @csrf.exempt # // user for testing 
 def quote():
 
     # only the user who already verify the user information and 
     # phone number can store quote 
-    # if session.get("can_store") != True:
-    #     abort(400)
+    if session.get("can_store") != True:
+        abort(400)
 
     # ensure the request is application/json 
     try:
@@ -195,8 +195,11 @@ def quote():
     groups_list = [(district.id, district.name) for district in districts]
 
     # create multidict
-    uinfo_form = PsiForm(MultiDict(usp), meta={'csrf': False})
-    phvf_form = PhoneForm(MultiDict(tp), meta={'csrf': False})
+    uinfo_form = PsiForm(MultiDict(usp))
+    phvf_form = PhoneForm(MultiDict(tp))
+    # for testing 
+    # uinfo_form = PsiForm(MultiDict(usp), meta={'csrf': False})
+    # phvf_form = PhoneForm(MultiDict(tp), meta={'csrf': False})
 
 
     # dynamic choices 
