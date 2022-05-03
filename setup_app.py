@@ -8,9 +8,6 @@ def setup():
         'flask db migrate',
         'flask db upgrade', 
         'flask add_districts',
-        'export FLASK_ENV=development',
-        'export FLASK_DEBUG=True',
-        'flask run'
     ]
 
     for i in run_list:

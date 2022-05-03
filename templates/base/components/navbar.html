@@ -1,18 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-dark plr-3" style="background-color: #5A5205;">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{ url_for("index") }}">
-        K Mover
+        K MOVER
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" style="flex-grow: 0 !important;" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="gap: 1em;">
-          <li class="nav-item">
+          <li class="nav-item mt-3 mt-md-0">
             <a class="nav-link {% if '/' == request.url_rule.rule %}active{% endif %}" aria-current="page" href="{{ url_for('index') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if '/q-a' == request.url_rule.rule %}active{% endif %}" aria-current="page" href="{{ url_for('q_and_a') }}">Faq</a>
+            <a class="nav-link {% if '/faq' == request.url_rule.rule %}active{% endif %}" aria-current="page" href="{{ url_for('q_and_a') }}">FAQ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {% if '/about-us' == request.url_rule.rule %}active{% endif %}" href="{{ url_for('about_us') }}">About</a>

@@ -9,7 +9,7 @@
             <div class="log-title mb-5">
                 <div class="d-flex gap-2 justify-content-center align-items-center">
                     <div class="col-auto">
-                        <img src="/static/lg-main.png" width="100" alt="Lg Main" style="transform: rotate(180deg);">
+                        <img src="{{ url_for('static', filename='lg-main.png') }}" width="100" alt="Lg Main" style="transform: rotate(180deg);">
                     </div>
 
                     <div class="col-auto">
@@ -19,7 +19,7 @@
             </div>
 
             <div class="mb-4">
-                <img class="img-fluid rounded" src="/static/team.jpg" alt="Team">
+                <img class="img-fluid rounded" src="{{ url_for('static', filename='team.jpg')}}" alt="Team">
             </div>
 
             <div class="mt-5 mb-5">

@@ -48,9 +48,9 @@ if __name__ == "__main__":
 
 @app.route("/")
 def index():
-    url = url_for("static", filename="css/adminlte.css")
 
-    print(url)
+    print(datetime.datetime.today() + datetime.timedelta(days=1))
+
     # get all the districts from database 
     districts = District.query.all()  
     return render_template("index.html", districts=districts)
@@ -152,13 +152,13 @@ def info_verify():
     }), 200)
 
 @app.route('/store/quote', methods = ["POST"])
-# @csrf.exempt // user for testing 
+@csrf.exempt # // user for testing 
 def quote():
 
     # only the user who already verify the user information and 
     # phone number can store quote 
-    if session.get("can_store") != True:
-        abort(400)
+    # if session.get("can_store") != True:
+    #     abort(400)
 
     # ensure the request is application/json 
     try:
@@ -176,8 +176,6 @@ def quote():
     usp = []
 
     tp = []
-
-    db_id = 0
 
     name = ''
     
@@ -200,6 +198,7 @@ def quote():
     uinfo_form = PsiForm(MultiDict(usp), meta={'csrf': False})
     phvf_form = PhoneForm(MultiDict(tp), meta={'csrf': False})
 
+
     # dynamic choices 
     uinfo_form.district_from.choices = groups_list
     uinfo_form.district_to.choices = groups_list
@@ -207,16 +206,14 @@ def quote():
     # ensure both user information, phone number are correct 
     if not uinfo_form.validate() or not phvf_form.validate():
         valid = False 
-
+        status = False
     if valid:
         sended = hasSend(json_data["email"], json_data["ph_num"])
 
         # create new record for the new user 
         if sended is None:
-            print(json_data)
             quote = Quote.create(json_data)
             limit = QuoteLimit.create(quote, 1)
-            db_id = quote.id 
         else:
             # check the quote limit 
             over = overLimit(sended)
@@ -239,9 +236,8 @@ def quote():
             name = json_data["name"]
 
     return make_response(jsonify({
-        'status': status,
-        'id': db_id,
         'msg': msg,
         'name': name,
-        'vaild': valid 
+        'valid': valid,
+        'status': status,
     }), 200)

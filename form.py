@@ -19,9 +19,7 @@ class PsiForm(FlaskForm):
     def validate_est_move_date(self, est_move_date):
         es_date = est_move_date.data
 
-        if es_date != None:
-            if es_date <= datetime.date.today():
-                raise ValidationError('Date can\'t be past!')
+        
 
 class PhoneForm(FlaskForm):
     ph_num = StringField('Phone', validators= [validators.InputRequired()])

@@ -15,7 +15,7 @@
         <div class="container" style="max-width: 1170px;">
             <div class="d-flex flex-column align-items-center justify-content-center" style="height: 70vh;">
                 <div class="mb-3">
-                    <img src="/static/checked.png" width="120" alt="Success Check">
+                    <img src="{{ url_for('static', filename='checked.png') }}" width="120" alt="Success Check">
                 </div>
                 <div class="mb-3">
                     <h3 class="fs-2 text-secondary fw-bold lh-lg">You're successfully sent.</h3>
