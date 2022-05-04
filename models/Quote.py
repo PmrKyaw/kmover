@@ -1,7 +1,6 @@
 from datetime import datetime
 from app import db
 from sqlalchemy.orm import relationship
-from werkzeug.datastructures import MultiDict
 
 
 class Quote(db.Model):
@@ -30,29 +29,6 @@ class Quote(db.Model):
     t_move_to = relationship("District", primaryjoin="Quote.move_to==District.id", uselist=True)
 
 
-    def get_multi(self):
-        l = [
-            ("salutation", self.salutation), ("name", self.name), ("email", self.email),
-            ("ph_num", self.phone),
-            ("district_from", self.move_from), ("district_to", self.move_to),
-            ("est_move_date", self.estimated_move_date.strftime("%Y-%m-%d")), ("msg", self.message)
-        ]
-        return MultiDict(l)
-
-    def to_dict(self):
-        return {
-            "salutation": self.salutation,
-            "name": self.name,
-            "email": self.email,
-            "phone": self.phone,
-            "move_from": self.t_move_from[0].name,
-            "move_to": self.t_move_to[0].name,
-            "estimated_move_date": self.estimated_move_date.strftime("%Y-%m-%d"),
-            "status": self.status,
-            "msg": self.message
-        }
-        
-
     @staticmethod
     def create(json_data, with_status=False):
         quote = Quote(
@@ -70,8 +46,6 @@ class Quote(db.Model):
         db.session.add(quote)
 
         db.session.commit() 
-
-        return quote
 
     @staticmethod
     def update(info, json_data, recreate=False):
@@ -92,33 +66,6 @@ class Quote(db.Model):
             user.quote_limit.limit_count = 1 
 
         db.session.commit() 
-
-    @staticmethod
-    def action(info, req_form, only_status=False):
-
-        if only_status:
-            user = info 
-            user.status = req_form["take_action"]
-            
-            db.session.add(user)
-            db.session.commit()
-            return req_form["take_action"]
-
-        else:
-            user = info 
-            user.salutation=req_form["salutation"]
-            user.name=req_form["name"]
-            user.email=req_form["email"]
-            user.phone=req_form["ph_num"]
-            user.move_from=req_form["district_from"]
-            user.move_to=req_form["district_to"]
-            user.message=req_form["msg"]
-            user.estimated_move_date=datetime.strptime(req_form["est_move_date"], "%Y-%m-%d")
-            user.status=req_form["take_action"]
-
-            db.session.commit() 
-            return req_form["take_action"]
-
 
     def __repr__(self):
         return '<Quote %r>' % self.name
