@@ -12,13 +12,16 @@ class PsiForm(FlaskForm):
     email = StringField('Email', validators = [validators.InputRequired(message="Enter Email"), validators.Email(message="Email is invalid!")])
     district_from = SelectField('Moving From', coerce=int, validators=[validators.InputRequired(message="Can't be blank!")])
     district_to = SelectField('Moving To', coerce=int, validators=[validators.InputRequired(message="Can't be blank!")])
-    est_move_date = DateField('Estimated Move Date', validators=[validators.InputRequired(message="Can't be blank!"), validators.DataRequired(message="Invalid date")])
+    est_move_date = DateField('Estimated Move Date', validators=[validators.InputRequired(message="Estimated move date can't be empty!"), validators.DataRequired(message="Invalid date")])
     msg =  TextAreaField('Message', [validators.optional(), validators.length(max=200)])
 
 
     def validate_est_move_date(self, est_move_date):
         es_date = est_move_date.data
 
+        if es_date != None:
+            if es_date <= datetime.date.today():
+                raise ValidationError('Date can\'t be past!')
         
 
 class PhoneForm(FlaskForm):

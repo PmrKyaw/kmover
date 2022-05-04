@@ -43,7 +43,7 @@
                                 >
                                     {% for option in form.salutation %}
                                         {% if loop.first %}
-                                            <option value="Mr."  selected>Salutation</option>
+                                            <option value=""  selected>Salutation</option>
                                         {% endif %}
                                         {{ option }}
                                     {% endfor %}
@@ -59,7 +59,6 @@
                                 <input type="text"
                                 class="form-control form-control-md pt-2 pb-2 {% if form.name.errors %}invalid-field{% endif %}" 
                                 name="name" id="name" 
-                                value="Kyaw"
                                 placeholder="Enter Name."
                                 >
 
@@ -76,7 +75,6 @@
                                 type="text" 
                                 class="form-control form-control-md pt-2 pb-2 {% if form.email.errors %}invalid-field{% endif %}" 
                                 name="email" id="email"
-                                value="kyaw@gmail.com"
                                 placeholder="Enter Email."
                                 >
                                 

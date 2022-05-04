@@ -7,6 +7,7 @@ def hasSend(email, phone):
     return c
 
 def overLimit(q):
+    print(q.quote_limit)
     if q.quote_limit.limit_count < 3:
         return "update"
     else:

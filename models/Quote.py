@@ -47,6 +47,8 @@ class Quote(db.Model):
 
         db.session.commit() 
 
+        return quote 
+
     @staticmethod
     def update(info, json_data, recreate=False):
 

@@ -65,6 +65,12 @@ const validator = $("#form").validate({
             notInPast: true
 
         },
+        district_from: {
+            required: true,
+        },
+        district_to: {
+            required: true,
+        },
         msg: {
             maxlength: 200
         }
@@ -76,15 +82,21 @@ const validator = $("#form").validate({
         },
         name: {
             required: "Enter your Name",
-            minlength: "Name need to be at least 4 character",
-            maxlength: "Name need to be less than 20 character",
+            minlength: "Name need to be at least 4 characters, and up to 20 max characters",
+            maxlength: "Name need to be at least 4 characters, and up to 20 max characters",
 
         },
         email: {
             required: "Enter email"
         },
+        district_from: {
+            required: "Can't be blank!"
+        },
+        district_to: {
+            required: "Can't be blank!",
+        },
         est_move_date: {
-            required: "Esitmated move date can't be empty!",
+            required: "Estimated move date can't be empty!",
             date: "Invalid date"
         }
     },
@@ -112,21 +124,23 @@ const validator = $("#form").validate({
 });
 
 $("#form input, #form select").on('change', function() {
+    console.log("change...");
     validator.form();
 });
 
+$("#form").on('submit', function() {
+    validator.form();
+});
 
 $("#datepicker").datepicker({
     autoclose: true,
     format: 'yyyy-mm-dd'
 }).on("changeDate", function(e) {
-    // e.currentTarget.children[0].setAttribute('uids', '1');
     validator.form();
-}).on('hide', function(ev) { // <-----------
+}).on('hide', function(ev) { 
     validator.form();
 });;
 
-$( "#datepicker" ).datepicker( "setDate", '2022-06-02');
 
 
 
