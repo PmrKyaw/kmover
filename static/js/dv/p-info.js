@@ -1,7 +1,7 @@
 jQuery.validator.addMethod("notInPast", 
 function(value, element) {
 
-    var d = new Date(),
+    let d = new Date(),
     month = '' + (d.getMonth() + 1),
     day = '' + d.getDate(),
     year = d.getFullYear();
@@ -39,7 +39,6 @@ const validator = $("#form").validate({
         if (element.classList.contains('date-control') & 
         element.getAttribute('uids') === '0') {
             element.setAttribute('uids', '1');
-
         }
         else {
             this.element(element);
@@ -105,13 +104,7 @@ const validator = $("#form").validate({
     function( error, element ){
 
         if (element.first().hasClass('date-control')) {
-
             element[0].nextElementSibling.nextElementSibling.textContent = error.text();
-
-
-            if (element[0].getAttribute('uids') !== '0') {
-            }
-            
         }
         else {
             element[0].nextElementSibling.textContent = error.text();
@@ -124,7 +117,6 @@ const validator = $("#form").validate({
 });
 
 $("#form input, #form select").on('change', function() {
-    console.log("change...");
     validator.form();
 });
 

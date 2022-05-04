@@ -5,7 +5,7 @@ const iti = window.intlTelInput(input, {
 });
 
 function coptyToClipboard(e) {
-    var $temp = $("<input>");
+    const $temp = $("<input>");
     $("body").append($temp);
     $temp.val($(e).text()).select();
     document.execCommand("copy");
@@ -234,7 +234,6 @@ function send() {
                 }
             },
             error: function(jqXhr, textStatus, errorMessage) {
-                console.log(errorMessage);
             }
         })
     });
