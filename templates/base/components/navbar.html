@@ -21,7 +21,7 @@
             <a class="nav-link {% if '/gallery' == request.url_rule.rule %}active{% endif %}" href="{{ url_for('gallery') }}">Photo Gallery</a>
           </li>
           <li class="nav-item">
-            <a class="btn {% if '/' != request.url_rule.rule %}btn-light-brown{% else %}nav-link{% endif %} p-2" href="{{ url_for("contact_us") }}">Contact Us</a>
+            <a class="{% if '/' != request.url_rule.rule %}btn btn-light-brown p-2{% else %}nav-link{% endif %}" href="{{ url_for("contact_us") }}">Contact Us</a>
           </li>
         </ul>
       </div>
