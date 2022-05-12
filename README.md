@@ -18,7 +18,7 @@
 
 ### Fourth FLASK 
 #### run the below codes one after another 
-`export FLASK_ENV=development`
+`export FLASK_ENV=development`  
 `export FLASK_DEBUG=True`
 
 ### Final Run App
