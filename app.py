@@ -36,8 +36,6 @@ from form import PsiForm, PhoneForm
 
 from helpers import hasSend, overLimit
 from db_setup import add_district
-from test_app import *
-
 
 db.init_app(app)
 
@@ -48,9 +46,6 @@ if __name__ == "__main__":
 
 @app.route("/")
 def index():
-
-    print(datetime.datetime.today() + datetime.timedelta(days=1))
-
     # get all the districts from database 
     districts = District.query.all()  
     return render_template("index.html", districts=districts)
@@ -78,6 +73,8 @@ def quoted():
         session.pop("quoted")
         return render_template("quoted.html")
     
+    return render_template("quoted.html")
+
     return redirect("/")
     
 @app.route("/quote/psri", methods = ["GET", "POST"])
@@ -86,7 +83,7 @@ def psri():
     # get all the districts 
     districts = District.query.all() 
 
-    # get the request district_from and district_to 
+    # get the district_from and district_to from request 
     req_district_from = request.args.get("district_from")
     req_district_to = request.args.get("district_to")
 
@@ -152,7 +149,7 @@ def info_verify():
     }), 200)
 
 @app.route('/store/quote', methods = ["POST"])
-# @csrf.exempt # // user for testing 
+# @csrf.exempt # user for testing 
 def quote():
 
     # only the user who already verify the user information and 
@@ -191,7 +188,6 @@ def quote():
     # same logic 
     districts = District.query.all() 
 
-
     groups_list = [(district.id, district.name) for district in districts]
 
     # create multidict
@@ -200,7 +196,6 @@ def quote():
     # for testing 
     # uinfo_form = PsiForm(MultiDict(usp), meta={'csrf': False})
     # phvf_form = PhoneForm(MultiDict(tp), meta={'csrf': False})
-
 
     # dynamic choices 
     uinfo_form.district_from.choices = groups_list

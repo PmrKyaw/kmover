@@ -12,63 +12,7 @@
     {% block styleSheet %}{% endblock %}
 
     <!-- Custom Css -->
-    <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
-
-    input, select, button, textarea {
-      box-shadow: unset !important;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: #5A5205 !important;
-    }
-
-
-    .plr-3 {
-        padding: 1.2em 3em;
-    }
-
-    .display-6 {
-        font-size: calc(1rem + 1.5vw) !important;
-    }
-
-    @media(max-width: 640px) {
-        .plr-3 {
-            padding: 1.2em 0.5em;
-        }
-    }
-    .form-wrapper {
-        width: 100%;
-        height: auto;
-        padding: 3em 0;
-    }
-
-    .btn-brown {
-      color: #ffffff;
-      background-color: #5A5205;
-      border-bottom: 4px solid #4f4703;
-      opacity: 0.9;
-    }
-
-    .btn-brown:hover {
-      color: #ffffff;
-      opacity: 1;
-    }
-
-    .btn-light-brown {
-      color: #4a4302;
-      background-color: #ffffff;
-      opacity: 0.95;
-    }
-
-    .btn-light-brown:hover {
-      opacity: 1;
-    }
-      
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base__style.css') }}">
 
   </head>
   <body class="d-flex flex-column h-100">
