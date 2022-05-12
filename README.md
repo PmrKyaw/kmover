@@ -5,10 +5,10 @@
 ## K MOVER | HOUSE MOVING SERVICE 
 
 ### First Create Virtual ENV
-#### run the below code to create that 
+#### run the below code to create Virutal ENV 
 `python -m venv ./env`
 
-### Second Active The Virutal ENV
+### Second Activate The Virutal ENV
 #### run the below code to active
 `source ./env/bin/activate`
 
