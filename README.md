@@ -7,7 +7,7 @@
 #### The most important part of building house moving website is to give a very good amount of information about the service to our customer.But, some of the information can't be devliever without knowing the need of the customers.But, there is a way to overcome that, we can give a form for the user to put some information, and verify that user information, and then user can  send a quote to us.By doing that, the company get good amount of user need, and then able to deliver the desired information back to the user with their submitted contact information.This is send quote.
 
 * Home Page
-#### The home page of the website, and the user can find the greatest amount of information about our service.
+    #### The home page of the website, and the user can find the greatest amount of information about our service.
 
 * FAQ
 #### Some of the question are not universal. They are only for certain things. That is where FQA come in place.
