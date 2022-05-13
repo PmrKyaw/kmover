@@ -10,16 +10,16 @@
     #### The home page of the website, and the user can find the greatest amount of information about our service.
 
 * FAQ
-#### Some of the question are not universal. They are only for certain things. That is where FQA come in place.
+    #### Some of the question are not universal. They are only for certain things. That is where FQA come in place.
 
 * About Us
-#### Background check is quite popular that day.
+    #### Background check is quite popular that day.
 
 * Gallery
-#### We can connect our customer with some of the works that we already done, showing visually.
+    #### We can connect our customer with some of the works that we already done, showing visually.
 
 * Contact Us
-#### Some customer just need a bit more information about the legitimacy of the company.
+    #### Some customer just need a bit more information about the legitimacy of the company.
 
 ## K MOVER | HOUSE MOVING SERVICE 
 
