@@ -9,22 +9,22 @@
 * __Home Page__
     #### On The home page of the website, the user can find a great amount of information about our service. On that home page, users can fill out the form to find the estimate, but it's will take the user to fill in more information about their needs.
 
-* Personal Information and Needs
+* __Personal Information and Needs__
     #### User can fill out their personal information like the username, email, where they want to move from, where they want to move to, estimated move date, and message.
 
-* Verification Page 
+* __Verification Page__
     #### Now, the last step is to verify whether the user's phone number is valid or not. If valid, we can send some otp to that phone number. But, I don't use communication API. So, the verify code is just static. But, it checks the correctness of the phone number for all countries.
 
-* FAQ
+* __FAQ__
     #### Some of the questions are not universal. They are only for certain things. That is where FQA comes in place.
 
-* About Us
+* __About Us__
     #### Background check is quite popular that day.
 
-* Gallery
+* __Gallery__
     #### We can connect our customers with some of the works that we have already done, showing visually.
 
-* Contact Us
+* __Contact Us__
     #### Some customers just need a bit more information about the legitimacy of the company.
 
 ## K MOVER | HOUSE MOVING SERVICE 
