@@ -10,7 +10,7 @@
     #### On The home page of the website, the user can find a great amount of information about our service. On that home page, users can fill out the form to find the estimate, but it's will take the user to fill in more information about their needs.
 
 * __Personal Information and Needs__
-    #### User can fill out their personal information like the username, email, where they want to move from, where they want to move to, estimated move date, and message.
+    #### User can fill out their personal information like their username, email, where they want to move from, where they want to move to, estimated move date, and message.
 
 * __Verification Page__
     #### Now, the last step is to verify whether the user's phone number is valid or not. If valid, we can send some otp to that phone number. But, I don't use communication API. So, the verify code is just static. But, it checks the correctness of the phone number for all countries.
@@ -30,15 +30,15 @@
 ## K MOVER | HOUSE MOVING SERVICE 
 
 ### First Create Virtual ENV
-#### run the below code to create Virutal ENV 
+#### run the below code to create Virtual ENV 
 `python -m venv ./env`
 
-### Second Activate The Virutal ENV
+### Second Activate The Virtual ENV
 #### run the below code to active
 `source ./env/bin/activate`
 
 ### Third Setup The App 
-#### run the below code to setup the app, (require internet connection)
+#### run the below code to set up the app, (require internet connection)
 `python setup_app.py`
 _please wait until you see_ __Insertion done..__
 
