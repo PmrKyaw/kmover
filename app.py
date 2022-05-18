@@ -72,10 +72,9 @@ def quoted():
     if session.get("quoted") == True:
         session.pop("quoted")
         return render_template("quoted.html")
-    
-    return render_template("quoted.html")
-
+        
     return redirect("/")
+
     
 @app.route("/quote/psri", methods = ["GET", "POST"])
 def psri():
