@@ -38,8 +38,9 @@
 `source ./env/bin/activate`
 
 ### Third Setup The App 
-#### run the below code to setup the app 
+#### run the below code to setup the app, (require internet connection)
 `python setup_app.py`
+_please wait until you see_ __Insertion done..__
 
 ### Fourth FLASK 
 #### run the below codes one after another 
