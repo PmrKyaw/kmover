@@ -27,7 +27,7 @@
 * __Contact Us__
     #### Some customers just need a bit more information about the legitimacy of the company.
 
-## K MOVER | HOUSE MOVING SERVICE 
+## K MOVER | HOUSE MOVING SERVICE APP SETUP
 
 ### First Create Virtual ENV
 #### run the below code to create Virtual ENV 
