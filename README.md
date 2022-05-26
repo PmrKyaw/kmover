@@ -34,7 +34,7 @@
 `python -m venv ./env`
 
 ### Second Activate The Virtual ENV
-#### run the below code to active
+#### run the below code to activate the virtual environment
 `source ./env/bin/activate`
 
 ### Third Setup The App 
